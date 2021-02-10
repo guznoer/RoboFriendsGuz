@@ -4,7 +4,7 @@ const SearchBox = ({ searchChange }) => {
             type="text"
             placeholder="Search Robots"
             onChange={searchChange}
-            className="bg-light-blue ba bw1 b--light-blue pa2"
+            className="bg-light-blue ba bw1 b--light-blue pa2 ma3"
         />
     )
 }
