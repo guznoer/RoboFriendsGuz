@@ -4,22 +4,28 @@ import SearchBox from '../components/SearchBox';
 import './App.css';
 import Scroll from '../components/Scroll';
 import ErrorBoundary from '../components/ErrorBoundary';
+import { connect } from 'react-redux';
+import { setSearchField } from '../actions';
 
-function App(){
+const mapStateToProps = (state) => ({
+    searchfield: state.searchfield
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+});
+
+function App(props){
 
     const [robots, setRobots] = useState([]);
-    const [searchfield, setSearchfield] = useState('');
-
-    function onSearchChange(event){
-        setSearchfield(event.target.value);
-    }
+    const {searchfield, onSearchChange} = props;
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(users => {
                 setRobots(users);
-            })
+            });
     }, []);
 
     const filteredRobots = robots.filter(robot => {
@@ -38,4 +44,4 @@ function App(){
         </div>;
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
