@@ -21,15 +21,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 function App(props){
 
-    // const [robots, setRobots] = useState([]);
     const {searchfield, robots, onSearchChange, isPending } = props;
 
     useEffect(() => {
-        // fetch('https://jsonplaceholder.typicode.com/users')
-        //     .then(response => response.json())
-        //     .then(users => {
-        //         setRobots(users);
-        //     });
         props.onRequestRobots();
     }, []);
 

@@ -3,12 +3,11 @@ import {
     REQUEST_ROBOTS_PENDING,
     REQUEST_ROBOTS_SUCCESS,
     REQUEST_ROBOTS_FAILED
-} from "./constans";
+} from "./constants";
 
 const initialStateSearch = { searchfield: '' };
 
 export const searchRobots = (state=initialStateSearch, action={}) => {
-    // console.log(action.type);
     switch (action.type) {
         case CHANGE_SEARCH_FIELD:
             return Object.assign({}, state, { searchfield: action.payload });
